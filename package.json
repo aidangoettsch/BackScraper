@@ -1,0 +1,22 @@
+{
+  "name": "backpacktf",
+  "version": "0.1.0",
+  "description": "A module to access the backpack.tf API and scrape data from the website.",
+  "main": "src/module.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yayes2/BackpackTF.git"
+  },
+  "author": "yayes2, CF12",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yayes2/BackpackTF/issues"
+  },
+  "homepage": "https://github.com/yayes2/BackpackTF#readme",
+  "dependencies": {
+    "standard": "^8.2.0"
+  }
+}
