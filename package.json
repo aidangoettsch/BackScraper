@@ -1,5 +1,5 @@
 {
-  "name": "backpacktf",
+  "name": "backscraper",
   "version": "0.1.0",
   "description": "A module to access the backpack.tf API and scrape data from the website.",
   "main": "src/module.js",
