@@ -22,23 +22,21 @@ class APIHandler {
 
   makeRequest (endpoint, payload, cb) {
     payload.key = this.key
-    let data
-
     https.get('https://backpack.tf/api/' + endpoint + '/v' + requestVersion[endpoint] + '?' + queryString.encode(payload), (res) => {
       res.on('data', (d) => {
-        cb(d)
+        cb(null, d)
       }).on('error', (err) => {
-        throw err
+        cb(err)
       })
     })
   }
 
   getPrices (appId, raw, since, cb) {
-    cb(this.makeRequest('IGetPrices', {
+    this.makeRequest('IGetPrices', {
       appid: appId,
       raw: raw,
       since: since
-    })
+    }, cb)
   }
 
   getPriceHistory (appId, item, quality, tradable, craftable, priceIndex, cb) {
