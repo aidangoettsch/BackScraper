@@ -1,6 +1,6 @@
 {
   "name": "backscraper",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A module to access the backpack.tf API and scrape data from the website.",
   "main": "src/module.js",
   "scripts": {

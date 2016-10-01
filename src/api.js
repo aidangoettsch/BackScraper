@@ -24,7 +24,7 @@ class APIHandler {
     payload.key = this.key
     https.get('https://backpack.tf/api/' + endpoint + '/v' + requestVersion[endpoint] + '?' + queryString.encode(payload), (res) => {
       res.on('data', (d) => {
-        cb(null, d)
+        cb(null, JSON.parse(d.toString()))
       }).on('error', (err) => {
         cb(err)
       })
