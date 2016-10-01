@@ -86,6 +86,4 @@ class APIHandler {
   }
 }
 
-module.exports = {
-  APIHandler: APIHandler
-}
+module.exports = APIHandler
