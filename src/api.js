@@ -20,69 +20,67 @@ class APIHandler {
     this.key = key
   }
 
-  makeRequest (endpoint, payload) {
+  makeRequest (endpoint, payload, cb) {
     payload.key = this.key
     let data
 
     https.get('https://backpack.tf/api/' + endpoint + '/v' + requestVersion[endpoint] + '?' + queryString.encode(payload), (res) => {
       res.on('data', (d) => {
-        data = d
+        cb(d)
       }).on('error', (err) => {
         throw err
       })
     })
-
-    return data
   }
 
-  getPrices (appId, raw, since) {
-    return this.makeRequest('IGetPrices', {
+  getPrices (appId, raw, since, cb) {
+    cb(this.makeRequest('IGetPrices', {
       appid: appId,
       raw: raw,
       since: since
     })
   }
 
-  getPriceHistory (appId, item, quality, tradable, craftable, priceIndex) {
-    return this.makeRequest('IPriceHistory', {
+  getPriceHistory (appId, item, quality, tradable, craftable, priceIndex, cb) {
+    this.makeRequest('IPriceHistory', {
       appid: appId,
       item: item,
       quality: quality,
       tradable: tradable,
       craftable: craftable,
       priceindex: priceIndex
-    })
+    }, cb)
   }
 
-  getCurrencies (appId) {
-    return this.makeRequest('IGetCurrencies', {
+  getCurrencies (appId, cb) {
+    this.makeRequest('IGetCurrencies', {
       appid: appId
-    })
+    }, cb)
   }
 
-  getSpecialItems (appId) {
-    return this.makeRequest('IGetSpecialItems', {
+  getSpecialItems (appId, cb) {
+    this.makeRequest('IGetSpecialItems', {
       appid: appId
-    })
+    }, cb)
   }
 
-  getMarketPrices (appId) {
-    return this.makeRequest('IGetMarketPrices', {
+  getMarketPrices (appId, cb) {
+    this.makeRequest('IGetMarketPrices', {
       appid: appId
-    })
+    }, cb)
   }
 
-  getUsers (steamIds) {
-    return this.makeRequest('IGetUsers', {
+  getUsers (steamIds, cb) {
+    this.makeRequest('IGetUsers', {
       steamids: steamIds
-    })
+    }, cb)
   }
 
-  getUserListings (appId, steamId) {
-    return this.makeRequest('IGetUserListings', {
+  getUserListings (appId, steamId, cb) {
+    this.makeRequest('IGetUserListings', {
       appid: appId,
       steamid: steamId
-    })
+    }, cb)
   }
 }
 
